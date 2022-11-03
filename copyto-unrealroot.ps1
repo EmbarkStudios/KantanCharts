@@ -1,4 +1,4 @@
-# Copies the workspace to the Plugins\Runtime folder under $ueroot.
+# Copies the workspace to the Plugins\$pluginName folder under $ueroot.
 # $ueroot is the Unreal code root folder (the one which contains e.g. Engine and LICENSE.md)
 param (
 	[Parameter(Mandatory = $true)]
@@ -6,7 +6,7 @@ param (
 )
 
 $pluginName = "KantanCharts"
-$pluginRoot = join-path $ueroot "Engine\Plugins\Marketplace\$pluginName"
+$pluginRoot = join-path $ueroot "Engine\Plugins\$pluginName"
 
 $files = (git ls-tree -r --name-only embark) | Select-String "\.ps1$" -NotMatch
 $files | ForEach-Object {
